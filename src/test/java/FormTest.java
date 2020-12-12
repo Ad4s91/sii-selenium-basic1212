@@ -3,6 +3,8 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.util.List;
+
 public class FormTest extends TestBase {
 
     @Test
@@ -19,8 +21,10 @@ public class FormTest extends TestBase {
         getDriver().findElement(By.id("inputAge3")).sendKeys("13");
 
 
+        getDriver().findElement(By.id("gridRadiosMale")).click();
 
-
+        List<WebElement> yearsOfExp = getDriver().findElements(By.name("gridRadiosExperience"));
+        yearsOfExp.get(5).click();
 
 
 
