@@ -1,9 +1,11 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.List;
+import java.util.Random;
 
 public class FormTest extends TestBase {
 
@@ -24,9 +26,15 @@ public class FormTest extends TestBase {
         getDriver().findElement(By.id("gridRadiosMale")).click();
 
         List<WebElement> yearsOfExp = getDriver().findElements(By.name("gridRadiosExperience"));
-        yearsOfExp.get(5).click();
 
+        Random rnd = new Random();
+        WebElement randYearElement = yearsOfExp.get(rnd.nextInt(yearsOfExp.size()));
+        randYearElement.click();
 
+        WebElement continentsElement = getDriver().findElement(By.id("selectContinents"));
+        Select continentsSelect = new Select(continentsElement);
+
+        continentsSelect.selectByValue("south-america");
 
         getDriver().findElement(By.className("btn-primary")).click();
 

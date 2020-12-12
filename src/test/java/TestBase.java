@@ -22,7 +22,6 @@ public class TestBase {
 
     @AfterMethod
     public void cleanUp() {
-
         driver.quit();
     }
 }
