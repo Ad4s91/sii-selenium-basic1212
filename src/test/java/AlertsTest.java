@@ -20,10 +20,11 @@ public class AlertsTest extends TestBase {
         WebElement msg = getDriver().findElement(By.id("simple-alert-label"));
         Assert.assertEquals(msg.getText(), "OK button pressed");
     }
+
     //  Zadanie:
     //  kliknij prompt allert
     //  w alercie wpisz imie i kliknij ok
-    //  sprawdz wyświetlony msg
+    //  sprawdz wyświetlony msg czy zawiera odpowiednia wiadomość
 
 
     // Zadanie:
