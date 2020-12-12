@@ -38,6 +38,5 @@ public class MyFirstTest {
     @AfterClass
     public void afterClass() throws Exception {
         System.out.println("Uruchomilem sie RAZ po");
-        throw new Exception();
     }
 }
