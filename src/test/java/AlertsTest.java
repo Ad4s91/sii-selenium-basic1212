@@ -21,18 +21,32 @@ public class AlertsTest extends TestBase {
         Assert.assertEquals(msg.getText(), "OK button pressed");
     }
 
-    //  Zadanie:
-    //  kliknij prompt allert
-    //  w alercie wpisz imie i kliknij ok
-    //  sprawdz wyświetlony msg czy zawiera odpowiednia wiadomość
+    @Test
+    public void shouldVerifyPromptAlert() {
+        getDriver().findElement(By.id("prompt-alert")).click();
+
+        getDriver().switchTo().alert().sendKeys("Lord Vader");
+        getDriver().switchTo().alert().accept();
+
+        Assert.assertEquals(getDriver().findElement(By.id("prompt-label")).getText(),
+                "Hello Lord Vader! How are you today?");
+    }
+
+    @Test
+    public void shouldVerifyConfirmAlert() {
+        WebElement msg = getDriver().findElement(By.id("confirm-label"));
+        WebElement confirmAlertButton = getDriver().findElement(By.id("confirm-alert"));
+
+        confirmAlertButton.click();
+        getDriver().switchTo().alert().accept();
+
+        Assert.assertEquals(msg.getText(), "You pressed OK!");
+
+        confirmAlertButton.click();
+        getDriver().switchTo().alert().dismiss();
+
+        Assert.assertEquals(msg.getText(), "You pressed Cancel!");
+    }
 
 
-    // Zadanie:
-    // kliknij confirm allert
-    // w alercie kliknij OK
-    // sprawdz wyświetlony msg
-    //
-    // kliknij confirm allert
-    // w alercie kliknij Cancel
-    // sprawdz wyświetlony msg
 }
