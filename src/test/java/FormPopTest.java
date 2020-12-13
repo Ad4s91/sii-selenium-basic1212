@@ -5,12 +5,17 @@ import pages.FormPage;
 import java.io.File;
 
 public class FormPopTest extends TestBase {
+    private FormPage formPage;
+    private File file;
+
+    public void testSetup() {
+        formPage = new FormPage(getDriver());
+        file = new File("src\\main\\resources\\file.txt");
+        getDriver().get("https://seleniumui.moderntester.pl/form.php");
+    }
+
     @Test
     public void shouldFillFormWIthSuccess() {
-        FormPage formPage = new FormPage(getDriver());
-        File file = new File("src\\main\\resources\\file.txt");
-        getDriver().get("https://seleniumui.moderntester.pl/form.php");
-
         formPage.setFirstName("Jan");
         formPage.setLastName("Kowalski");
         formPage.setEmail("j.k@wp.pl");
